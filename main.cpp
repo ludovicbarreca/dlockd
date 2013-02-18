@@ -54,6 +54,7 @@ int main(int argc, char *argv[]) {
 	DLockManager m(remote_port);
 	dlm = &m;
 	DLockLocal l(m, QHostAddress::LocalHost, local_port);
+	dlm->initSocket();
 
 	signal(SIGINT, sighandler);
 	signal(SIGTERM, sighandler);

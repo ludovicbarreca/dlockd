@@ -7,17 +7,17 @@ seen as a peer-to-peer lock system.
 
 ## Framing Protocol
 
-  0                   1                   2                   3
-  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
- +-------+-------+-----------------------------------------------+
- |version| opcode|                    checksum                   |
- |  (4)  |  (4)  |                      (32)                     |
- |       |       |                                               |
- +-------+-------+ - - - - - - - - - - - - - - - - - - - - - - - +
- |    checksum   |
- |       ...     |                      data ...
- |      (32)     |
- +---------------+-------------------------------------------- ...
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-------+-------+-----------------------------------------------+
+    |version| opcode|                    checksum                   |
+    |  (4)  |  (4)  |                      (32)                     |
+    |       |       |                                               |
+    +-------+-------+ - - - - - - - - - - - - - - - - - - - - - - - +
+    |    checksum   |
+    |       ...     |                      data ...
+    |      (32)     |
+    +---------------+-------------------------------------------- ...
 
 ### Version: 4 bits
 
@@ -57,10 +57,10 @@ except to the emitter, and include source ip as data.
 
 Example data payload:
 
- +--------------------+
- |   source ip:port   |
- |       (ascii)      |
- +--------------------+
+    +--------------------+
+    |   source ip:port   |
+    |       (ascii)      |
+    +--------------------+
 
 A client should keep a record of known peers and withdraw any node
 that has been unreachable for a twenty-four consecutive hours.
@@ -72,10 +72,10 @@ Any request without correct uuid should be withdraw and ignored.
 
 Example data payload:
 
- +-----------+
- |    UUID   |
- | 16 octets |
- +-----------+
+    +-----------+
+    |    UUID   |
+    | 16 octets |
+    +-----------+
 
 A receiver will then check if a lock has already been requested for
 this ressource, and will respond accordingly.
@@ -88,10 +88,10 @@ forwarded when received.
 After validation, a response packet is sent back to the emitter.
 Data structure is as follow:
 
- +-----------+----------+
- |    UUID   | Response |
- | 16 octets | 1 octet  |
- +-----------+----------+
+    +-----------+----------+
+    |    UUID   | Response |
+    | 16 octets | 1 octet  |
+    +-----------+----------+
 
  * UUID is the system uuid and must complies with ISO 9834-8
  * Response is used to specify the state of the request

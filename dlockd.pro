@@ -10,5 +10,5 @@ QT -= gui
 QT += network
 
 # Input
-HEADERS += DLockLocal.hpp DLockManager.hpp
-SOURCES += main.cpp DLockManager.cpp DLockLocal.cpp
+HEADERS += DLockLocal.hpp DLockManager.hpp DLockPacket.hpp
+SOURCES += main.cpp DLockManager.cpp DLockLocal.cpp DLockPacket.cpp

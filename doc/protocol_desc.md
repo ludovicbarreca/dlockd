@@ -9,15 +9,15 @@ seen as a peer-to-peer lock system.
 
      0                   1                   2                   3
      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-    +-------+-------+-----------------------------------------------+
-    |version| opcode|                    checksum                   |
-    |  (4)  |  (4)  |                      (32)                     |
-    |       |       |                                               |
+    +-------+-------+-------------------------------+---------------+
+    |version| opcode|           checksum            |               |
+    |  (4)  |  (4)  |             (16)              |     data...   |
+    |       |       |                               |               |
     +-------+-------+ - - - - - - - - - - - - - - - - - - - - - - - +
-    |    checksum   |
-    |       ...     |                      data ...
-    |      (32)     |
-    +---------------+-------------------------------------------- ...
+    |
+    |                              data ...
+    |
+    +------------------------------------------------------------ ...
 
 ### Version: 4 bits
 
@@ -34,10 +34,10 @@ opcode is unknown. Following are the defined values :
  * %x3 denotes a _lock announce_
  * %x4-F are reserved for further opcodes
 
-### Checksum: 4 bytes
+### Checksum: 2 bytes
 
 When generating the checksum, this field must be set to 0 prior
-generation. It must be generated for all packets sent using crc32
+generation. It must be generated for all packets sent using crc16
 hash.
 
 ### Data: x bytes

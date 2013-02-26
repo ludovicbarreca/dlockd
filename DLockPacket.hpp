@@ -1,8 +1,6 @@
-#include <QObject>
 #include <QByteArray>
 
-class DLockPacket: public QObject {
-	Q_OBJECT;
+class DLockPacket {
 
 public:
 	char const PEER_ANNOUNCE = 0x0;
